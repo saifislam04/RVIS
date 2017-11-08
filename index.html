@@ -1,0 +1,423 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>RVIS</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+				<!--jQueryUI-->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+		  <!--jQueryUI-->
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">-->
+		
+		<!-- multi select plugin http://loudev.com/ -->
+		<!--<link href="css/multi-select.css" media="screen" rel="stylesheet" type="text/css">-->
+		
+		<!-- date picker plugin 
+		http://eternicode.github.io/bootstrap-datepicker/?markup=input&format=%27yyyy-mm-dd%27&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=2&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&autoclose=on&keyboardNavigation=on&forceParse=on&defaultViewDate=on#sandbox
+		-->
+		<!--<link href="css/bootstrap-datepicker.min.css" media="screen" rel="stylesheet" type="text/css">-->
+		
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/css/jquery.dataTables.min.css" />-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/css/dataTables.bootstrap.min.css" />
+		
+		<style type="text/css">
+			body {
+				padding-top: 20px;
+			}
+			.ms-container {
+				width: inherit;
+			}
+			.small-paddingleft{
+				color:#999;
+				padding-left:10px;
+				font-size:0.9em;
+			}
+			.small{
+				color:#999;
+				font-size:0.9em;
+			}
+			.paddingTop20{
+				padding-top: 20px;
+			}
+			/*#mytable > thead > tr:nth-child(2) > th:nth-child(1) > input*/
+			thead input {
+				/*width: 50px;*/
+				max-width: 100%;
+				/*padding: 0 100px;*/
+				/*box-sizing: border-box;*/
+			}
+			tfoot {
+				display: table-header-group;
+			}
+			.dataTables_info{
+				opacity: .7;
+			}
+		</style>
+		
+		<!--<script src="js/vendor/modernizr-2.8.3.min.js"></script>-->
+	</head>
+	<body>
+		
+		
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1"><a href="index.html" id="resetall" class="btn btn-primary">HOME</a> </div>
+				<div class="col-sm-offset-3 col-md-7"> <b><font size="5"> RVIS Title Title</b></font><br> <br><br></div>
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-md-12">
+					<button type="button" class="pull-right btn btn-success" data-toggle="modal" data-target="#edit-modal" data-key="">
+						<span class="glyphicon glyphicon-plus"></span> <b>Add a record</b>
+					</button>
+					
+				</div>
+			</div>
+			
+			
+
+<script language="javascript" type="text/javascript">
+	var column_names = [ 'var1', 'var2', 'var3', 'var4', 'Date' ];
+	var column_display_names = [ 'var1', 'var2', 'var3', 'var4', 'Date' ];
+	var column_types = [ 'var1', 'var2', 'var3', 'var4', 'Date' ];
+	var totalColumns = column_names.length;
+</script>
+
+			
+			<div class="row paddingTop20">
+				<div class="col-md-12">
+					<table id="mytable" class="table table-hover" width="100%" style="overflow:auto;">
+					
+						<thead>
+							<tr>
+								<script language="javascript" type="text/javascript">
+									column_display_names.forEach(function(d,i){
+										document.write('<th>'+d+'</th>');
+									})
+								</script>
+								<th></th> <!-- buttons -->
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<script language="javascript" type="text/javascript">
+									column_display_names.forEach(function(d,i){
+										document.write('<th>'+d+'</th>');
+									})
+								</script>
+								<th></th> <!-- buttons -->
+							</tr>
+						</tfoot>
+						
+						<tbody> 
+					
+							<!-- THE CONTENT OF THE TABLE IS FILLED BY JAVASCRIPT -->
+					
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+
+			<!-- MODAL FOR EDITING AND ADDING -->
+			<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+							<!-- <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="exampleModalLabel">Edit Entry</h4>
+							</div> -->
+						<div class="modal-body">
+							<form>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group" hidden>
+											<label for="edit-key" class="control-label">Key:</label>
+											<input type="text" class="form-control" id="edit-key" disabled>
+										</div>
+										<script language="javascript" type="text/javascript">
+											column_names.forEach(function(d,i){
+												
+												document.write('<div class="form-group">');
+												document.write('<label for="edit-'+d+'" class="control-label">'+column_display_names[i]+'</label>');
+												
+		
+												if (column_types[i]==='datalist'){
+													document.write('<input type="text" class="form-control" id="edit-'+d+'" list="list-'+d+'">');
+												} else if (column_types[i]==='textarea'){
+													document.write('<textarea class="form-control" rows="4" id="edit-'+d+'"></textarea>');
+												} else {
+													document.write('<input type="text" class="form-control" id="edit-'+d+'">');
+												}
+		
+												if (d==='Links'){
+													document.write('<p class="help-block">https://www.wiv-isp.be/epidemio/epistat/docs/RSA/ before the file name</p>');
+												}
+		
+												document.write('</div>');
+												
+												if (i==Math.floor(totalColumns/2)){ document.write('</div><div class="col-md-6">'); }
+		
+											})
+										</script>
+									</div>
+								</div>
+		
+								<!-- <datalist id="list-dob">
+									<option value="< 1">
+									<option value="1- 4">
+									<option value="5- 9">
+									<option value="10-14">
+									<option value="15-19">
+									<option value="20-24">
+									<option value="25-29">
+									<option value="30+">
+								</datalist> -->
+		
+								<datalist id="list-Subject">
+									<option value="Infectious Disease (ID)">
+									<option value="Anti Microbial Resistance (AMR)">
+									<option value="Chemical">
+									<option value="Vector">
+									<option value="Health Care Associated Infection (HCAI)">
+									<option value="Drugs">
+									<option value="Environment">
+									<option value="Bio Terrorism">
+								</datalist>
+		
+								<datalist id="list-Decision">
+									<option value="No further action">
+									<option value="Epidemiological follow up">
+									<option value="Consultative Signal Assessment (CSA)">
+									<option value="Primary Risk Assessment (PRA)">
+									<option value="Evidence-based Risk Assessment (ERA)">
+								</datalist>
+		
+								<!-- <div class="form-group">
+									<label for="edit-loc" class="control-label">Location:</label>
+									<input type="text" class="form-control" id="edit-loc">
+								</div>
+		
+								<div class="form-group">
+									<label for="edit-dob" class="control-label">Date of Birth:</label>
+									<input type="text" class="form-control" id="edit-dob">
+								</div> -->
+		
+							</form>
+						</div> <!-- modal-body -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="update_case();">Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		
+		</div> <!-- /container -->
+	
+	
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+		
+		<!--<script src="js/jquery.multi-select.js" type="text/javascript"></script>-->
+		<!--<script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>-->
+		<!--<script src="js/validator.min.js" type="text/javascript"></script>-->
+
+		 <!--jqueryUI-->
+		 <!--<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>-->
+		 <!--jqueryUI-->
+		 
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.15/js/dataTables.bootstrap.min.js"></script>
+		 
+		<script>
+		
+		// 1 LOAD DATA AND CREATE DATA TABLE -----------------------------------------------
+		
+			var tableid = 'mytable';
+			
+			// https://datatables.net/examples/api/multi_filter.html
+			var length = $('#'+tableid+' tfoot th').length;
+			$('#'+tableid+' tfoot th').each( function (index, element) {
+				
+				var title = $('#'+tableid+' tfoot th').eq( $(this).index() ).text();
+				if (index != (length - 1)) {
+					$(this).html( '<input type="text" placeholder="Search '+title+'" class="form-control input-sm mini-input" width="99%" style="max-width:99%" >' );
+				}
+				else{
+					$(this).html('');
+				}
+				$(this).css('max-width', '30px');
+				
+			});
+			
+			
+			var table = $('#'+tableid).DataTable({
+				"ajax": "data/sampledata.json",
+				// Last column button
+				"columnDefs": [{
+					"searchable": false,
+					"orderable": false,
+					"targets": -1,
+					"data": null,
+					"defaultContent": '<button class="btn btn-sm btn-default">Edit</button>'
+				}]
+			});
+			
+			// Apply the column filter when typing
+			table.columns().every(function(){
+				var column = this;
+				$( 'input', this.footer() ).on( 'keyup change', function (){
+					column.search( this.value ).draw();
+				});
+			});
+			
+			
+		// EDIT / ADD RECORD -----------------------------------------------
+			
+			var modal = $('#edit-modal');
+				
+			// CLICK EDIT BUTTON
+			$('#'+tableid+' tbody').on( 'click', 'button', function () {
+				var data = table.row( $(this).parents('tr') ).data();
+				// fill fields
+				column_names.forEach(function(d,i){
+					modal.find('#edit-'+d).val(data[i]);
+				});
+				// open modal
+				modal.modal('show');
+			});
+			
+			// ON MODAL CLOSE
+			modal.on('hidden.bs.modal', function () {
+				column_names.forEach(function(d,i){
+					// empty fields
+					modal.find('#edit-'+d).val('');
+				});
+			});
+			
+			
+			
+		</script>
+	</body>
+</html>
+
+
+<!--
+
+1 make json from dataset
+	cf SAS macro : json4datatables
+	should be stored in folder 'data/'
+2 show data in table
+3 edit/add record popup
+4 save the modal form 
+	-> pass the data to a STP, which 
+		writes the data somewhere
+		redo step1
+		redirect to our page
+	
+
+
+
+
+
+
+
+
+	%macro json4datatables(ds,path,file,charvars,numvars)
+		/ store source
+		DES="json4datatables(ds,path,file,charvars,numvars)";
+
+		/* creates a json with no headers
+		 * a bit like a csv without the first line
+		 * it takes thus less space
+		 * but you have to know which column is what
+		 */
+
+		data _null_ (encoding='UTF-8');
+			length line $300;
+			set &ds nobs=nobs end=end;
+			file "&path.&file." encoding='utf-8' bom/**/ ;
+
+			line = '[';
+
+			%if &charvars ne %then %do;
+				%do i=1 %to %sysfunc(countw(&charvars));
+					%let charvar = %scan(&charvars, &i);
+					%if &i ne 1 %then %do;
+						line = cats(line,',');
+					%end;
+					line = cats(line,'"',&charvar,'"');
+				%end;
+			%end;
+			%if &numvars ne %then %do;
+				%do i=1 %to %sysfunc(countw(&numvars));
+					%let numvar = %scan(&numvars, &i);
+					%if &i ne 1 OR &charvars ne %then %do;
+						line = cats(line,',');
+					%end;
+					line = cats(line,'',&numvar,'');
+				%end;
+			%end;
+
+			line = cats(line,']');
+
+			if _n_=1 then put '{"data": [';
+			if not end then put line +(-1) ',';
+			else do;
+				put line;
+				put ']}';
+			end;
+			run;
+
+	%mend json4datatables;
+
+
+	%macro json4datatables_useformat(ds,path,file,charvars,numvars)
+		/ store source
+		DES="json4datatables_useformat(ds,path,file,charvars,numvars)";
+
+		/* same as json4datatables but writes formats
+		 * instead of values
+		 */
+
+		data _null_;
+			length line $300;
+			set &ds nobs=nobs end=end;
+			file "&path.&file." encoding='utf-8' bom/**/ ;
+
+			%if &charvars ne %then %do;
+				%do i=1 %to %sysfunc(countw(&charvars));
+					%let charvar = %scan(&charvars, &i);
+					line = catx(',',line,quote(cats(vvalue(&charvar))));
+				%end;
+			%end;
+			%if &numvars ne %then %do;
+				%do i=1 %to %sysfunc(countw(&numvars));
+					%let numvar = %scan(&numvars, &i);
+					line = catx(',',line,vvalue(&numvar));
+				%end;
+			%end;
+
+			line = cats('[',line,']');
+
+			if _n_=1 then put '{"data": [';
+			if not end then put line +(-1) ',';
+			else do;
+				put line;
+				put ']}';
+			end;
+			run;
+
+	%mend json4datatables_useformat;
+-->
