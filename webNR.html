@@ -1,0 +1,369 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Webform-NR</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+                <!--jQueryUI-->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+          <!--jQueryUI-->
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">-->
+        
+        <!-- multi select plugin http://loudev.com/ -->
+        <link href="css/multi-select.css" media="screen" rel="stylesheet" type="text/css">
+        
+        <!-- date picker plugin 
+        http://eternicode.github.io/bootstrap-datepicker/?markup=input&format=%27yyyy-mm-dd%27&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=2&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&autoclose=on&keyboardNavigation=on&forceParse=on&defaultViewDate=on#sandbox
+        -->
+        <link href="css/bootstrap-datepicker.min.css" media="screen" rel="stylesheet" type="text/css">
+        
+        
+        <style type="text/css">
+            body {
+                padding-top: 20px;
+            }
+            .ms-container {
+                width: inherit;
+            }
+            .small-paddingleft{
+                color:#999;
+                padding-left:10px;
+                font-size:0.9em;
+            }
+            .small{
+                color:#999;
+                font-size:0.9em;
+            }
+        </style>
+        
+        <!--<script src="js/vendor/modernizr-2.8.3.min.js"></script>-->
+    </head>
+    <body>
+        
+        
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"> <a href="index.html" id="resetall" class="btn btn-primary">HOME</a> </div>
+                <div class="col-sm-offset-3 col-md-7"> <h2>Webform-NR</h2> </div>
+            </div>
+            <br>
+        	<form id="myform" class="form-horizontal" action="http://xxxxxx.net/SASStoredProcess/do" method="get" enctype="multipart/form-data">
+                    
+                    <input type="hidden" name="_program" ID="STP" value="/Test/Dev_ETL/WebETL_STP1">
+                    <input type="hidden" name="_username" value="xxxxxxx">
+                 
+
+
+                    <input type="hidden" name="_password" value="xxxxxxx">
+                   
+                <!-- 1 -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">FOIA</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline"> <input type="radio" name="FOIA" id="FOIAYes" value="Yes"> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="FOIA" id="FOIANo" value="No" checked="checked"> No </label>
+                    </div>
+                </div>
+                
+                <!-- 2 -->
+                <div class="form-group" id="">
+                    <label for="FOIANumber" class="col-sm-3 control-label">FOIA Number</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="FOIANumber" name="FOIANumber" >
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="form-group" id="">
+                    <label for="EstablishmentID" class="col-sm-3 control-label">Establishment ID</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="EstablishmentID" name="EstablishmentID" >
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="form-group">
+                    <label for="STATE" class="col-sm-3 control-label">STATE</label>
+                    <div class="col-sm-4">
+                        <select  id="STATE" class="form-control" name="STATE" >
+                            <option value="MD">Maryland</option>
+                            <option value="value">label</option>
+                            <option value="value">label</option>
+                            <option value="value">label</option>
+                        </select> 
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="form-group">
+                    <label for="BusinessUnitIDNew" class="col-sm-3 control-label">BusinessUnitIDNew</label>
+                    <div class="col-sm-9">
+                        <select id="BusinessUnitIDNew" multiple class="" name="BusinessUnitIDNew">
+                            <option value="OFO">OFO</option>
+                            <option value="OIA">OIA</option>
+                            <option value="STATE">STATE</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="form-group">
+                    <label for="HACCPSize" class="col-sm-3 control-label">HACCP Size</label>
+                    <div class="col-sm-9">
+                        <select id="HACCPSize" multiple class="" name="HACCPSize">
+                            <option value="1">Very Small</option>
+                            <option value="2">Smal</option>
+                            <option value="3">Large</option>
+                            <option value="4">NA</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="form-group">
+                    <label for="District" class="col-sm-3 control-label">District</label>
+                    <div class="col-sm-9">
+                        <select id="District" multiple class="" name="District">
+                            <option value="1">District 05 Albany</option>
+                            <option value="2">District 15 Denver</option>
+                            <option value="3">District 25 Des Moines</option>
+                            <option value="4">District 35 Springdale</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- 8 -->
+                <div class="form-group" id="">
+                    <label for="Circuit" class="col-sm-3 control-label">Circuit</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="Circuit" name="Circuit" >
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="form-group" id="">
+                    <label for="RegulationPHIS" class="col-sm-3 control-label">Regulation PHIS </label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="RegulationPHIS" name="RegulationPHIS" >
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="form-group" id="">
+                    <label for="RegulationPBIS" class="col-sm-3 control-label">Regulation PBIS</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="RegulationPBIS" name="RegulationPBIS" >
+                    </div>
+                </div>
+                
+                
+                <!-- 11 -->
+                <div class="form-group">
+                    <label for="startdateselect" class="col-sm-3 control-label">Date Range </label>
+                    <div class="col-sm-3">
+                        <input type="text" name="startdate" id="startdate" class="form-control" id="startdateselect" placeholder="'2013-01-01'" value="'2013-01-01'" >
+                    </div>
+                    
+                    <label for="enddateselect" class="col-sm-1 control-label">To</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="enddate" id="enddate" class="form-control" id="enddateselect" placeholder="'2013-12-31'" value="'2013-12-31'" >
+                    </div>
+                </div>
+                
+                
+                <!-- 12 -->
+                <div class="form-group" id="">
+                    <label for="InspectionTaskPBIS" class="col-sm-3 control-label">Inspection Task PBIS</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="InspectionTaskPBIS" name="InspectionTaskPBIS" >
+                    </div>
+                </div>
+                <!-- 13 -->
+                <div class="form-group" id="">
+                    <label for="InspectionTaskPHIS" class="col-sm-3 control-label">Inspection Task PHIS</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="InspectionTaskPHIS" name="InspectionTaskPHIS" >
+                    </div>
+                </div>
+                <!-- 14 -->
+                <div class="form-group" id="">
+                    <label for="NRNumber" class="col-sm-3 control-label">NR Number</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="NRNumber" name="NRNumber" >
+                    </div>
+                </div>
+                <!-- 15 -->
+                <div class="form-group" id="">
+                    <label for="TaskDescription" class="col-sm-3 control-label">Task Description</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="TaskDescription" name="TaskDescription" >
+                    </div>
+                </div>
+                
+                <!-- 16 -->
+                <div class="form-group">
+                    <label for="ActiveInactiveestablishments" class="col-sm-3 control-label">Active/Inactive establishments</label>
+                    <div class="col-sm-9">
+                        <select id="ActiveInactiveestablishments" multiple class="" name="ActiveInactiveestablishments">
+                            <option value="1">Active</option>
+                            <option value="2">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 17 -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Description text</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline"> <input type="radio" name="Descriptiontext" id="DescriptiontextYes" value="Yes"> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="Descriptiontext" id="DescriptiontextNo" value="No" checked="checked"> No </label>
+                    </div>
+                </div>
+                
+                <!-- 18 -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Slaughter Plants</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline"> <input type="radio" name="SlaughterPlants" id="SlaughterPlantsYes" value="Yes"> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="SlaughterPlants" id="SlaughterPlantsNo" value="No" checked="checked"> No </label>
+                    </div>
+                </div>
+
+
+                <!-- 19 -->
+                <div class="form-group" id="TEST1">
+                    <label for="SpeciesClassId" class="col-sm-3 control-label">Species Class Id</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="SpeciesClassId" name="SpeciesClassId" >
+                    </div>
+                </div>
+                
+                
+                <!-- 23 -->
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Processing Plants</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline"> <input type="radio" name="ProcessingPlants" id="ProcessingPlantsYes" value="Yes"> Yes </label>
+                        <label class="radio-inline"> <input type="radio" name="ProcessingPlants" id="ProcessingPlantsNo" value="No" checked="checked"> No </label>
+                    </div>
+                </div>
+                
+                <!-- 24 -->
+                <div class="form-group" id="">
+                    <label for="FinishedProductId" class="col-sm-3 control-label">Finished Product Id</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="FinishedProductId" name="FinishedProductId" >
+                    </div>
+                </div>
+                <!-- 25 -->
+                <div class="form-group" id="">
+                    <label for="FinishedProductName" class="col-sm-3 control-label">Finished Product Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="FinishedProductName" name="FinishedProductName" >
+                    </div>
+                </div>
+                <!-- 26 -->
+                <div class="form-group" id="">
+                    <label for="ProductGroupId" class="col-sm-3 control-label">Product Group Id</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="ProductGroupId" name="ProductGroupId" >
+                    </div>
+                </div>
+                <!-- 27 -->
+                <div class="form-group" id="">
+                    <label for="ProductGroupName" class="col-sm-3 control-label">Product Group Name</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="ProductGroupName" name="ProductGroupName" >
+                    </div>
+                </div>
+                <!-- 28 -->
+                <div class="form-group" id="">
+                    <label for="ProductionVolumeRange" class="col-sm-3 control-label">Production Volume Range</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="ProductionVolumeRange" name="ProductionVolumeRange" >
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-primary">Run program &raquo;</button>
+                        <!--<span class="small-paddingleft">*Required</span>-->
+                    </div>
+                </div>
+            </form>
+            
+            
+        
+        </div> <!-- /container -->
+    
+    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+        
+        <script src="js/jquery.multi-select.js" type="text/javascript"></script>
+        <script src="js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+        <script src="js/validator.min.js" type="text/javascript"></script>
+
+         <!--jqueryUI-->
+         <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+         <!--jqueryUI-->
+        <script>
+        
+			// DATE PICKER --------------------------------------
+			$("#startdate, #enddate").datepicker({
+				changeMonth: true,
+				changeYear: true,
+				dateFormat: "yy-mm-dd"              
+			});
+			//Date to String
+			$('#startdate, #enddate').change(function(){
+				$( this ).val(function(i, val ) {
+					return ("'"+ val + "'");
+				});
+			});
+                
+			
+            // MULTISELECT PLUGIN --------------------------------------
+            $('select[multiple]').multiSelect({
+                selectableHeader: "<div class='small-paddingleft'>Available</div>",
+                selectionHeader: "<div class='small-paddingleft'>Selected</div>",
+                // selectableFooter: "<div class='small-paddingleft'>Selectable footer</div>",
+                // selectionFooter: '<div class="small">\
+                //             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>\
+                //             If you don\'t select anything, defaults will be automatically selected\
+                //         </div>'
+            });
+    
+    
+            // ANIMATIONS --------------------------------------
+            // // deactivate
+            // $("#ByListDiv").hide().children().prop("disabled", true);
+            
+            // $('input[name="ByVarTest"]').change(function() {
+            //     var selected_name = $(this).val();
+            //     // activate
+            //     if (selected_name === 'Yes') {
+            //         $("#ByListDiv").slideDown('fast').children().prop("disabled", false);
+            //     }
+            //     // deactivate
+            //     else {
+            //         $("#ByListDiv").slideUp('fast').children().prop("disabled", true);
+            //     }
+            // });
+                
+                
+                
+            // FORM VALIDATOR --------------------------------------
+            $('#myform').validator();
+        
+        
+            
+        </script>
+    </body>
+</html>
+
+
+
